@@ -90,7 +90,7 @@ class PaymentController extends Controller
             return response()->json($order, 400);
         }
 
-        // session()->forget("cart");
+        session()->forget("cart");
 
         return response()->json([
             "status" => "success",
@@ -98,7 +98,7 @@ class PaymentController extends Controller
             "data" => [
                 "order" => $order["data"],
             ]
-    ],200);
+        ], 200);
     }
 
 
@@ -131,7 +131,7 @@ class PaymentController extends Controller
             return [
                 "status" => "success",
                 "message" => "Order created successfully",
-                "data"=> $order
+                "data" => $order
             ];
         } catch (\Exception $e) {
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\CampController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +26,9 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Route::get('camps', [CampController::class, 'index'])->name('camp.index');
 
+Route::get("profile", [ProfileController::class, "index"])->name("index");
 
 
 Route::middleware(["auth"])->group(function () {
@@ -39,10 +40,7 @@ Route::middleware(["auth"])->group(function () {
     Route::get("carts", [CartController::class, "index"])->name("carts.index");
 
 
-
-
     Route::post("payments/store", [PaymentController::class, "store"])->name("payments.store");
-
 
 
     Route::prefix("admin")->name("admin.")->group(function () {

@@ -162,9 +162,9 @@
 
                     console.log('handle', paymentResults);
                     displayPaymentResults('SUCCESS');
-
-
                     showStatus('Payment made successfully', 'success');
+
+                    window.location.href = {{ route("profile") }};
 
                     console.debug('Payment Success', paymentResults);
                 } catch (e) {
@@ -172,6 +172,9 @@
                     displayPaymentResults('FAILURE');
 
                     showStatus('Some issue occured, please try again', 'error');
+
+                    document.getElementById('card-button').disabled = false;
+                    document.getElementById('card-button').innerText = 'Pay';
 
                     console.error(e.message);
                 }
