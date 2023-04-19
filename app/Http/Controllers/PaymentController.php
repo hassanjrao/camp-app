@@ -75,7 +75,6 @@ class PaymentController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
 
         $amount = 5000; //Is in USD currency and is in smallest denomination (cents). ($amount = 5000 == 50 Dollars)
 
@@ -103,7 +102,6 @@ class PaymentController extends Controller
             'reference_id' => $reference_id
         ];
 
-        dd($options);
 
         Square::charge($options); // Simple charge
     }
