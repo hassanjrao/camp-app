@@ -32,7 +32,8 @@
                                     <tr>
                                         @if ($loop->first)
                                             <td rowspan="{{ count($camp['sessions']) }}">{{ $camp['name'] }}</td>
-                                            <td rowspan="{{ count($camp['sessions']) }}">{{ $camp['price'] }} {{ config("app.currency") }}</td>
+                                            <td rowspan="{{ count($camp['sessions']) }}">{{ $camp['price'] }}
+                                                {{ config('app.currency') }}</td>
                                         @endif
                                         <td>{{ $session['start_date'] }} - {{ $session['end_date'] }}</td>
                                         <td>
@@ -91,7 +92,7 @@
                                 <td>{{ $checkoutCalculations['total_camps'] }}</td>
                                 <td>{{ $checkoutCalculations['total_sessions'] }}</td>
                                 <td>{{ $checkoutCalculations['total_slots'] }}</td>
-                                <td>{{ $checkoutCalculations['total_price'] }} {{ config("app.currency") }}</td>
+                                <td>{{ $checkoutCalculations['total_price'] }} {{ config('app.currency') }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -192,6 +193,8 @@
                 },
                 body,
             });
+
+            console.log(paymentResponse);
             if (paymentResponse.ok) {
                 return paymentResponse.json();
             }

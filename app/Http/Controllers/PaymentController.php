@@ -89,6 +89,16 @@ class PaymentController extends Controller
         if ($order["status"] == "error") {
             return response()->json($order, 400);
         }
+
+        // session()->forget("cart");
+
+        return response()->json([
+            "status" => "success",
+            "message" => "Payment successful",
+            "data" => [
+                "order" => $order["data"],
+            ]
+    ],200);
     }
 
 
