@@ -32,7 +32,7 @@
                                     <tr>
                                         @if ($loop->first)
                                             <td rowspan="{{ count($camp['sessions']) }}">{{ $camp['name'] }}</td>
-                                            <td rowspan="{{ count($camp['sessions']) }}">{{ $camp['price'] }}</td>
+                                            <td rowspan="{{ count($camp['sessions']) }}">{{ $camp['price'] }} {{ config("app.currency") }}</td>
                                         @endif
                                         <td>{{ $session['start_date'] }} - {{ $session['end_date'] }}</td>
                                         <td>
@@ -91,20 +91,23 @@
                                 <td>{{ $checkoutCalculations['total_camps'] }}</td>
                                 <td>{{ $checkoutCalculations['total_sessions'] }}</td>
                                 <td>{{ $checkoutCalculations['total_slots'] }}</td>
-                                <td>{{ $checkoutCalculations['total_price'] }}</td>
+                                <td>{{ $checkoutCalculations['total_price'] }} {{ config("app.currency") }}</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <br><br>
 
-                    <form id="payment-form">
-                        <div id="card-container"></div>
-                        <button id="card-button" type="button">Pay $1.00</button>
-                    </form>
-                    <div id="payment-status-container"></div>
+                    <div class="row text-center">
+
+                        <form id="payment-form ">
+                            <div id="card-container"></div>
+                            <button id="card-button" class="btn btn-primary" type="button">Pay {{  $checkoutCalculations['total_price'] }}  {{ config("app.currency") }}</button>
+                        </form>
+                        <div id="payment-status-container"></div>
 
 
+                    </div>
                 </div>
 
             </div>

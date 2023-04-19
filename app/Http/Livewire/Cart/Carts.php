@@ -53,7 +53,6 @@ class Carts extends Component
 
 
         // group slots by camp
-
         $camps = Camp::whereIn("id", $slots->pluck("campSession.camp.id"))->with("campSessions.campSessionSlots")->get();
 
 
@@ -102,6 +101,10 @@ class Carts extends Component
         $this->checkoutCalculations["total_price"]=$camps->sum(function($camp){
             return $camp["price"];
         });
+
+        $this->checkoutCalculations["total_price"]*= $this->checkoutCalculations["total_slots"];
+
+
 
     }
 
