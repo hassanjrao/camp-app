@@ -98,11 +98,11 @@
 
                     <br><br>
 
-                    <div class="row text-center">
+                    <div class="row text-center" wire:ignore>
 
                         <form id="payment-form ">
                             <div id="card-container"></div>
-                            <button id="card-button" class="btn btn-primary" type="button">Pay {{  $checkoutCalculations['total_price'] }}  {{ config("app.currency") }}</button>
+                            <button id="card-button" class="btn btn-primary" type="button">Pay</button>
                         </form>
                         <div id="payment-status-container"></div>
 
