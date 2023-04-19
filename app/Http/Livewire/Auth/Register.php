@@ -36,7 +36,7 @@ class Register extends Component
             "age"=>"required|numeric",
             "parents_name"=>"required",
             "gender"=>"required|in:male,female,not specified",
-            "selectedCamp"=>"required|exists:camps,id"
+            // "selectedCamp"=>"required|exists:camps,id"
         ]);
 
 
@@ -49,7 +49,7 @@ class Register extends Component
             "age"=>$this->age,
             "parents_name"=>$this->parents_name,
             "gender"=>$this->gender,
-            "camp_id"=>$this->selectedCamp,
+            // "camp_id"=>$this->selectedCamp,
         ]);
 
         $user->assignRole("client");
@@ -58,7 +58,7 @@ class Register extends Component
 
         auth()->login($user);
 
-        return redirect()->route("camp.show",["id"=>$camp['id'],"slug"=>$camp['slug']]);
+        return redirect()->route("camp.index");
 
     }
 

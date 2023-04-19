@@ -39,8 +39,9 @@ Route::middleware(["auth"])->group(function () {
 
     Route::post("payments/store", [PaymentController::class, "store"])->name("payments.store");
 
-
     Route::get("profile", [ProfileController::class, "index"])->name("profile.index");
+
+    Route::get("profile/order/{id}/details", [ProfileController::class, "orderDetails"])->name("profile.orderDetails");
 
 
 

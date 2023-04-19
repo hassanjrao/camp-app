@@ -68,29 +68,42 @@
 
                 <a href="{{ route('carts.index') }}" id="cartHeaderIcon"
                     class="nav-item nav-link {{ request()->segment(1) == 'carts' ? ' active' : '' }}">
-                    Cart ({{ session()->has('cart') && isset(session('cart')['slots']) ? count(session('cart')['slots']) : '0' }})
+                    Cart
+                    ({{ session()->has('cart') && isset(session('cart')['slots']) ? count(session('cart')['slots']) : '0' }})
                 </a>
 
-                    <input type="hidden" id="cartHiddenField" value="{{ session()->has('cart') && isset(session('cart')['slots']) ? count(session('cart')['slots']) : 0 }}">
+                <input type="hidden" id="cartHiddenField"
+                    value="{{ session()->has('cart') && isset(session('cart')['slots']) ? count(session('cart')['slots']) : 0 }}">
 
-
+                {{--
                 <a href="about.html" class="nav-item nav-link"
-                    {{ request()->segment(1) == 'about' ? ' active' : '' }}>About</a>
+                    {{ request()->segment(1) == 'about' ? ' active' : '' }}>About</a> --}}
                 <a href="{{ route('camp.index') }}"
                     class="nav-item nav-link {{ request()->segment(1) == 'camps' ? ' active' : '' }}">Camps</a>
 
                 <a href="contact.html"
                     class="nav-item nav-link {{ request()->segment(2) == 'contact' ? ' active' : '' }}">Contact</a>
+
+                    @if (Auth::check())
+                    <a class="nav-item nav-link" onclick="document.getElementById('logout-form').submit()">Logout</a>
+
+                    <form action="{{ route('logout') }}" id="logout-form" method="POST">
+                        @csrf
+
+                    </form>
+                @endif
+
+                @if (Auth::check())
+                    <a href="{{ route('profile.index') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Profile<i
+                            class="fa fa-arrow-right ms-3"></i></a>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i
+                            class="fa fa-arrow-right ms-3"></i></a>
+                @endif
             </div>
             {{-- check if login --}}
 
-            @if (Auth::check())
-                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Dashboard<i
-                        class="fa fa-arrow-right ms-3"></i></a>
-            @else
-                <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i
-                        class="fa fa-arrow-right ms-3"></i></a>
-            @endif
+
         </div>
     </nav>
     <!-- Navbar End -->
@@ -122,7 +135,8 @@
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i
+                                class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i
                                 class="fab fa-linkedin-in"></i></a>
@@ -219,8 +233,16 @@
 
         }
 
+
+
+        window.addEventListener('show-status', event => {
+
+            showStatus(event.detail.message, event.detail.type, event.detail.toast)
+        })
+
+
         function confirmDialog(message, confirmButtonText = 'Yes', cancelButtonText = 'No', type = 'success') {
-         return   Swal.fire({
+            return Swal.fire({
                 title: message,
                 icon: type,
                 showCloseButton: true,

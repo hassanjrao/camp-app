@@ -44,7 +44,7 @@
 
                         <div class="row mb-3">
 
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <label for="selectedCamp" class=" text-md-end">{{ __('Camp') }}</label>
 
                                 <select wire:model.defer='selectedCamp' class="form-select @error('selectedCamp') is-invalid @enderror">
@@ -60,7 +60,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div class="col-md-6">
                                 <label for="phone" class=" text-md-end">{{ __('Phone') }}</label>
@@ -77,11 +77,6 @@
                             </div>
 
 
-                        </div>
-
-
-                        <div class="row mb-3">
-
                             <div class="col-md-6">
 
                                 <label for="age" class=" text-md-end">{{ __('Age') }}</label>
@@ -97,7 +92,14 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6">
+
+                        </div>
+
+
+                        <div class="row mb-3">
+
+
+                            <div class="col-md-12">
                                 <label for="address" class=" text-md-end">{{ __('Address') }}</label>
 
                                 <input id="address" type="tel"

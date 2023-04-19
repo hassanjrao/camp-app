@@ -15,4 +15,14 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function campSession()
+    {
+        return $this->belongsTo(CampSession::class);
+    }
+
+    public function campSessionSlot()
+    {
+        return $this->belongsTo(CampSessionSlot::class);
+    }
 }

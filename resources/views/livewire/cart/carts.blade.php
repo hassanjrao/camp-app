@@ -99,16 +99,18 @@
 
                     <br><br>
 
-                    <div class="row text-center" wire:ignore>
+                    @if (count($camps) > 0)
+                        <div class="row text-center" wire:ignore>
 
-                        <form id="payment-form ">
-                            <div id="card-container"></div>
-                            <button id="card-button" class="btn btn-primary" type="button">Pay</button>
-                        </form>
-                        <div id="payment-status-container"></div>
+                            <form id="payment-form ">
+                                <div id="card-container"></div>
+                                <button id="card-button" class="btn btn-primary" type="button">Pay</button>
+                            </form>
+                            <div id="payment-status-container"></div>
 
 
-                    </div>
+                        </div>
+                    @endif
                 </div>
 
             </div>
@@ -164,7 +166,7 @@
                     displayPaymentResults('SUCCESS');
                     showStatus('Payment made successfully', 'success');
 
-                    window.location.href = '{{ route("profile.index") }}';
+                    window.location.href = '{{ route('profile.index') }}';
 
                     console.debug('Payment Success', paymentResults);
                 } catch (e) {
