@@ -8,7 +8,7 @@ use Nikolag\Square\Facades\Square;
 class PaymentController extends Controller
 {
 
-    public function storeO(Request $request)
+    public function store(Request $request)
     {
         // $request->validate([
         //     'amount' => 'required|numeric',
@@ -75,7 +75,7 @@ class PaymentController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function stores(Request $request)
     {
 
         $amount = 5000; //Is in USD currency and is in smallest denomination (cents). ($amount = 5000 == 50 Dollars)
