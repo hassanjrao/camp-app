@@ -11,4 +11,11 @@ class Order extends Model
     use HasFactory, HasProducts;
 
     protected $table='orders';
+
+    protected $guarded;
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }
