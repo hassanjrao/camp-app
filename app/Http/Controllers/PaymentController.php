@@ -64,6 +64,7 @@ class PaymentController extends Controller
         $order = array(
             'products' => $products,
             "user_id" => 1,
+            "total" => 1000,
         );
 
 
