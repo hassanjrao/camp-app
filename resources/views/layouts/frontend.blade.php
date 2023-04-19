@@ -55,7 +55,8 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="{{ route("home") }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>{{ config('app.name') }}</h2>
+            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>
+                {{ config('app.name') }}</h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -81,11 +82,11 @@
                 <a href="{{ route('camp.index') }}"
                     class="nav-item nav-link {{ request()->segment(1) == 'camps' ? ' active' : '' }}">Camps</a>
 
-                <a href="contact.html"
-                    class="nav-item nav-link {{ request()->segment(2) == 'contact' ? ' active' : '' }}">Contact</a>
+                {{-- <a href="contact.html"
+                    class="nav-item nav-link {{ request()->segment(2) == 'contact' ? ' active' : '' }}">Contact</a> --}}
 
                     @if (Auth::check())
-                    <a class="nav-item nav-link" onclick="document.getElementById('logout-form').submit()">Logout</a>
+                    <a class="nav-item nav-link" style="cursor: pointer" onclick="document.getElementById('logout-form').submit()">Logout</a>
 
                     <form action="{{ route('logout') }}" id="logout-form" method="POST">
                         @csrf
@@ -94,11 +95,9 @@
                 @endif
 
                 @if (Auth::check())
-                    <a href="{{ route('profile.index') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Profile<i
-                            class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="{{ route('profile.index') }}" class=" nav-item nav-link {{ request()->segment(1) == 'profile' ? ' active' : '' }}">Profile</a>
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i
-                            class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="{{ route('login') }}" class=" nav-item nav-link {{ request()->segment(1) == 'login' || request()->segment(1) == 'register' ? ' active' : '' }}">Join Now</a>
                 @endif
             </div>
             {{-- check if login --}}
