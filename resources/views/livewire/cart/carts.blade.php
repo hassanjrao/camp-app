@@ -155,6 +155,8 @@
                     cardButton.disabled = true;
                     const token = await tokenize(paymentMethod);
                     const paymentResults = await createPayment(token);
+
+                    console.log('handle',paymentResults);
                     displayPaymentResults('SUCCESS');
 
                     console.debug('Payment Success', paymentResults);
@@ -196,6 +198,7 @@
 
             console.log(paymentResponse);
             if (paymentResponse.ok) {
+
                 return paymentResponse.json();
             }
             const errorBody = await paymentResponse.text();
