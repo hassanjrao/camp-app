@@ -28,9 +28,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('camps', [CampController::class, 'index'])->name('camp.index');
 
-Route::get("profile", [ProfileController::class, "index"])->name("index");
-
-
 Route::middleware(["auth"])->group(function () {
 
     Route::get('camps/{id}/{slug}', [CampController::class, 'show'])->name('camp.show');
@@ -41,6 +38,11 @@ Route::middleware(["auth"])->group(function () {
 
 
     Route::post("payments/store", [PaymentController::class, "store"])->name("payments.store");
+
+
+    Route::get("profile", [ProfileController::class, "index"])->name("profile.index");
+
+
 
 
     Route::prefix("admin")->name("admin.")->group(function () {

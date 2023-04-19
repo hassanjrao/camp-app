@@ -164,7 +164,7 @@
                     displayPaymentResults('SUCCESS');
                     showStatus('Payment made successfully', 'success');
 
-                    window.location.href = {{ route("profile") }};
+                    window.location.href = {{ route("profile.index") }};
 
                     console.debug('Payment Success', paymentResults);
                 } catch (e) {
