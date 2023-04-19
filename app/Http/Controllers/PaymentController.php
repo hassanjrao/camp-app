@@ -102,6 +102,8 @@ class PaymentController extends Controller
             'reference_id' => $reference_id
         ];
 
+        dd($options);
+
         Square::charge($options); // Simple charge
     }
 }
