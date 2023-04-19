@@ -8,7 +8,7 @@ use Nikolag\Square\Facades\Square;
 class PaymentController extends Controller
 {
 
-    public function store(Request $request)
+    public function storeO(Request $request)
     {
         // $request->validate([
         //     'amount' => 'required|numeric',
@@ -73,7 +73,7 @@ class PaymentController extends Controller
         $square = Square::setOrder($order, $location_id)->charge($options);
     }
 
-    public function storesi(Request $request)
+    public function store(Request $request)
     {
 
         $amount = 5000; //Is in USD currency and is in smallest denomination (cents). ($amount = 5000 == 50 Dollars)
