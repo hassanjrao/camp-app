@@ -180,7 +180,7 @@
                 locationId,
                 sourceId: token,
             });
-            const paymentResponse = await fetch('/payment', {
+            const paymentResponse = await fetch('/payments/store', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
