@@ -36,7 +36,7 @@
 
                                 <div class="position-relative overflow-hidden">
                                     <a href="{{ route('camp.show',["id"=>$camp['id'],"slug"=>$camp['slug']]) }}">
-                                        <img class="img-fluid" src="{{ $camp['camp_image'] }}" alt="">
+                                        <img class="img-fluid" src="{{ $camp['camp_image'] }}" alt="" height="225px">
                                         <div
                                             class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
 
@@ -77,5 +77,5 @@
 @endsection
 
 @push('scripts')
-    
+
 @endpush
