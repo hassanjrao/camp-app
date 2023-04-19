@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::table('order_items', function (Blueprint $table) {
 
-            $table->unsignedBigInteger("slot_id")->nullable()->after('camp_session_id');
-            $table->foreign("slot_id")->references("id")->on("camp_session_slots");
+            $table->unsignedBigInteger("camp_session_slot_id")->nullable()->after('camp_session_id');
+            $table->foreign("camp_session_slot_id")->references("id")->on("camp_session_slots");
 
         });
     }
@@ -30,8 +30,8 @@ return new class extends Migration
     {
         Schema::table('order_items', function (Blueprint $table) {
 
-            $table->dropForeign("order_items_slot_id_foreign");
-            $table->dropColumn("slot_id");
+            $table->dropForeign("order_items_camp_session_slot_id_foreign");
+            $table->dropColumn("camp_session_slot_id");
 
         });
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Camp;
 use App\Models\CampSessionSlot;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Nikolag\Square\Facades\Square;
 
@@ -57,7 +59,11 @@ class PaymentController extends Controller
             ];
         });
 
-        dd($camps);
+        if($camps->count()==0){
+            return;
+        }
+
+
 
 
         $total_camps=$camps->count();
@@ -77,11 +83,40 @@ class PaymentController extends Controller
 
 
 
-
-
         $this->makePayment($total_price,$request->sourceId);
 
+        $this->createOrder($total_price,$camps);
+
     }
+
+
+    public function createOrder($total_price,$camps){
+
+        $order=Order::create([
+            "user_id"=>auth()->id(),
+            "total"=> $total_price,
+        ]);
+
+        foreach($camps as $camp){
+
+            foreach($camp["sessions"] as $session){
+
+                foreach($session["slots"] as $slot){
+
+                    OrderItem::create([
+                        "order_id"=>$order->id,
+                        "camp_session_id"=>$session["id"],
+                        "camp_session_slot_id"=>$slot["id"],
+                        "price"=>$camp["price"],
+                    ]);
+
+                }
+
+            }
+
+        }
+    }
+
 
     public function makePayment($totalPrice,$sourceId)
     {
