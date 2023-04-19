@@ -121,6 +121,7 @@ class PaymentController extends Controller
             return [
                 "status" => "success",
                 "message" => "Order created successfully",
+                "data"=> $order
             ];
         } catch (\Exception $e) {
 
