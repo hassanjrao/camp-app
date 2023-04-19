@@ -8,7 +8,7 @@ use Nikolag\Square\Facades\Square;
 class PaymentController extends Controller
 {
 
-    public function storeOrder(Request $request)
+    public function store(Request $request)
     {
         // $request->validate([
         //     'amount' => 'required|numeric',
@@ -19,7 +19,7 @@ class PaymentController extends Controller
         $amount = 1000;
 
         //nonce reference => https://docs.connect.squareup.com/articles/adding-payment-form
-        $formNonce = $request->token;
+        $formNonce = $request->sourceId;
 
         //$location_id is id of a location from Square
         $location_id = env('SQUARE_LOCATION_ID');
@@ -73,7 +73,7 @@ class PaymentController extends Controller
         $square = Square::setOrder($order, $location_id)->save();
     }
 
-    public function store(Request $request)
+    public function storesi(Request $request)
     {
 
         $amount = 5000; //Is in USD currency and is in smallest denomination (cents). ($amount = 5000 == 50 Dollars)
