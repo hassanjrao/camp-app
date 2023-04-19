@@ -149,6 +149,10 @@
             async function handlePaymentMethodSubmission(event, paymentMethod) {
                 event.preventDefault();
 
+                document.getElementById('card-button').disabled = true;
+                document.getElementById('card-button').innerText = 'Processing...';
+
+
                 try {
                     // disable the submit button as we await tokenization and make a
                     // payment request.
@@ -156,13 +160,19 @@
                     const token = await tokenize(paymentMethod);
                     const paymentResults = await createPayment(token);
 
-                    console.log('handle',paymentResults);
+                    console.log('handle', paymentResults);
                     displayPaymentResults('SUCCESS');
+
+
+                    showStatus('Payment made successfully', 'success');
 
                     console.debug('Payment Success', paymentResults);
                 } catch (e) {
                     cardButton.disabled = false;
                     displayPaymentResults('FAILURE');
+
+                    showStatus('Some issue occured, please try again', 'error');
+
                     console.error(e.message);
                 }
             }
