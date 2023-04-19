@@ -179,6 +179,8 @@
             const body = JSON.stringify({
                 locationId,
                 sourceId: token,
+                totalPrice: {{ $checkoutCalculations['total_price'] }}
+
             });
             const paymentResponse = await fetch('/payments/store', {
                 method: 'POST',
