@@ -71,6 +71,8 @@ class PaymentController extends Controller
         //Create and save order and apply a discount to the order
         $order['discounts'] = array($discount);
         $square = Square::setOrder($order, $location_id)->charge($options);
+
+
     }
 
     public function store(Request $request)
@@ -103,6 +105,6 @@ class PaymentController extends Controller
         ];
 
 
-        Square::charge($options); // Simple charge
+        return Square::charge($options); // Simple charge
     }
 }
