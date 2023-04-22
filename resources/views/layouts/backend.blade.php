@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>OneUI - Bootstrap 5 Admin Template &amp; UI Framework</title>
+    <title>Admin - {{ config("app.name") }}</title>
 
     <meta name="description"
         content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
@@ -80,7 +80,7 @@
             'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
         -->
     <div id="page-container"
-        class="sidebar-o enable-page-overlay sidebar-dark side-scroll page-header-fixed main-content-narrow">
+        class="sidebar-o enable-page-overlay sidebar-dark side-scroll page-header-fixed">
         <!-- Side Overlay-->
         <aside id="side-overlay" class="fs-sm">
             <!-- Side Header -->
@@ -256,6 +256,32 @@
                                 <span class="nav-main-link-name">Users</span>
                             </a>
                         </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->segment(2) == 'camps' && request()->segment(4) != 'sessions' ? ' active' : '' }}"
+                                href="{{ route('admin.camps.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Camps</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ (request()->segment(2) == 'sessions' || request()->segment(4) == 'sessions') && request()->segment(4) != 'slots' ? ' active' : '' }}"
+                                href="{{ route('admin.sessions.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Sessions</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->segment(2) == 'slots' || request()->segment(4) == 'slots' ? ' active' : '' }}"
+                                href="{{ route('admin.slots.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Slots</span>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </div>
