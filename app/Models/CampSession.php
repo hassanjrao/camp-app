@@ -27,4 +27,10 @@ class CampSession extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+
+    public function getSessionIdAttribute()
+    {
+        return "Session ".$this->id;
+    }
+
 }

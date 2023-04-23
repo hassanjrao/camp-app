@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\CampController as AdminCampController;
 use App\Http\Controllers\Admin\CampSessionController;
 use App\Http\Controllers\Admin\CampSessionSlotController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\CampController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -51,9 +53,7 @@ Route::middleware(["auth"])->group(function () {
 
     Route::middleware(["role:admin"])->prefix("admin")->name("admin.")->group(function () {
 
-        Route::get("/", function () {
-            return view("admin.dashboard");
-        })->name("index");
+        Route::get("/", [DashboardController::class, "index"])->name("index");
 
 
         Route::resource("users", UserController::class);
@@ -64,5 +64,7 @@ Route::middleware(["auth"])->group(function () {
 
         Route::post("slots/sessions", [CampSessionSlotController::class, "getCampSessions"])->name("slots.camp.sessions");
         Route::resource("slots", CampSessionSlotController::class);
+
+        Route::resource("orders",OrderController::class);
     });
 });

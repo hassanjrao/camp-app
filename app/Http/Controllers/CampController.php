@@ -32,7 +32,7 @@ class CampController extends Controller
                 "age_range"=>$age_range,
                 "no_max_age"=>$camp->no_max_age,
                 "max_registration"=>$camp->max_registration,
-                "camp_image"=>$camp->campImages->first()->image,
+                "camp_image"=>$camp->campImages->first() ? $camp->campImages->first()->image : null,
                 "total_sessions"=>$camp->campSessions->count(),
             ];
         });

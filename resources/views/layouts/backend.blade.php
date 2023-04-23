@@ -252,7 +252,7 @@
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->segment(2) == 'users' ? ' active' : '' }}"
                                 href="{{ route('admin.users.index') }}">
-                                <i class="nav-main-link-icon si si-users"></i>
+                                <i class="nav-main-link-icon fa fa-users "></i>
                                 <span class="nav-main-link-name">Users</span>
                             </a>
                         </li>
@@ -260,7 +260,7 @@
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->segment(2) == 'camps' && request()->segment(4) != 'sessions' ? ' active' : '' }}"
                                 href="{{ route('admin.camps.index') }}">
-                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <i class="nav-main-link-icon fas fa-campground"></i>
                                 <span class="nav-main-link-name">Camps</span>
                             </a>
                         </li>
@@ -268,7 +268,8 @@
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ (request()->segment(2) == 'sessions' || request()->segment(4) == 'sessions') && request()->segment(4) != 'slots' ? ' active' : '' }}"
                                 href="{{ route('admin.sessions.index') }}">
-                                <i class="nav-main-link-icon si si-cursor"></i>
+
+                                <i class=" nav-main-link-icon fas fa-lightbulb"></i>
                                 <span class="nav-main-link-name">Sessions</span>
                             </a>
                         </li>
@@ -277,8 +278,17 @@
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->segment(2) == 'slots' || request()->segment(4) == 'slots' ? ' active' : '' }}"
                                 href="{{ route('admin.slots.index') }}">
-                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <i class="fas fa-clock nav-main-link-icon"></i>
                                 <span class="nav-main-link-name">Slots</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->segment(2) == 'orders' ? ' active' : '' }}"
+                                href="{{ route('admin.orders.index') }}">
+                                
+                                <i class="nav-main-link-icon fas fa-tags"></i>
+                                <span class="nav-main-link-name">Orders</span>
                             </a>
                         </li>
 
@@ -344,7 +354,7 @@
                             aria-expanded="false">
                             <img class="rounded-circle" src="{{ asset('media/avatars/avatar10.jpg') }}"
                                 alt="Header Avatar" style="width: 21px;">
-                            <span class="d-none d-sm-inline-block ms-2">John</span>
+                            <span class="d-none d-sm-inline-block ms-2">{{ auth()->user()->name }}</span>
                             <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ms-1 mt-1"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"

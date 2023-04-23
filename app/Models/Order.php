@@ -23,4 +23,16 @@ class Order extends Model
     {
         return "#Order-".$this->id;
     }
+
+    public function gettotalPriceAttribute()
+    {
+        return number_format(floatVal($this->items->map(function($item){
+            return $item->campSession->camp->price;
+        })->sum()),2);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
