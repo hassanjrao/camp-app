@@ -16,7 +16,7 @@ class CampController extends Controller
      */
     public function index()
     {
-        $camps=Camp::latest()->with(["campSessions","campSessions.orderItems"])->get();
+        $camps=Camp::latest()->with(["campSessions","campSessions.orderItems","campImages"])->get();
 
         $camps=$camps->map(function($camp){
 
@@ -24,6 +24,7 @@ class CampController extends Controller
             return [
                 "id"=>$camp->id,
                 "name"=>$camp->name,
+                "camp_image"=>$camp->campImages->first() ? asset("storage/".$camp->campImages->first()->image) : null,
                 "min_age"=>$camp->min_age,
                 "max_age"=>$camp->max_age,
                 "no_max_age"=>$camp->no_max_age,
@@ -41,6 +42,7 @@ class CampController extends Controller
             ];
 
         });
+
 
 
         return view("admin.camps.index",compact("camps"));
@@ -66,6 +68,7 @@ class CampController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             "name"=>"required|unique:camps,name",
             "min_age"=>"required|numeric|gte:0",
@@ -78,7 +81,9 @@ class CampController extends Controller
 
         $slug=Str::slug($request->name);
 
-        Camp::create([
+       $image= $request->file("image")->store("camps");
+
+       $camp= Camp::create([
             "name"=>$request->name,
             "slug"=>$slug,
             "min_age"=>$request->min_age,
@@ -87,6 +92,10 @@ class CampController extends Controller
             "price"=>$request->price,
             "max_registration"=>$request->max_registration,
             "description"=>$request->description,
+        ]);
+
+        $camp->campImages()->create([
+            "image"=>$image,
         ]);
 
         return redirect()->route("admin.camps.index")->withToastSuccess("Camp created successfully");
@@ -113,6 +122,8 @@ class CampController extends Controller
     {
         $camp=Camp::findOrFail($id);
 
+        $camp->image=$camp->campImages->first() ? asset("storage/".$camp->campImages->first()->image) : null;
+
         return view("admin.camps.add_edit",compact("camp"));
     }
 
@@ -130,6 +141,7 @@ class CampController extends Controller
             "min_age"=>"required|numeric|gte:0",
             "max_age"=>"nullable|numeric|gte:0",
             "no_max_age"=>"nullable",
+            "image"=>"nullable|image",
             "price"=>"required|numeric",
             "max_registration"=>"required|numeric|gte:0",
             "description"=>"required",
@@ -150,6 +162,17 @@ class CampController extends Controller
             "description"=>$request->description,
         ]);
 
+        if($request->hasFile("image")){
+
+            $camp->campImages()->delete();
+
+            $image= $request->file("image")->store("camps");
+
+            $camp->campImages()->create([
+                "image"=>$image,
+            ]);
+        }
+
         return redirect()->route("admin.camps.index")->withToastSuccess("Camp updated successfully");
     }
 
@@ -162,6 +185,8 @@ class CampController extends Controller
     public function destroy($id)
     {
         $camp=Camp::findOrFail($id);
+
+        $camp->campImages()->delete();
 
         $camp->delete();
 

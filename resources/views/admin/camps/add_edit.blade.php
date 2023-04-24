@@ -47,6 +47,8 @@
                             </div>
 
 
+
+
                             <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label class="form-label" for="label">Min Age <span class="text-danger">*</span></label>
                                 <input required type="number" value="{{ $camp ? $camp->min_age : null }}"
@@ -58,16 +60,16 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 mt-4">
                                 <div class="form-check">
                                     <input class="form-check-input" onchange="maxAgeLimitChange(this)" type="checkbox"
-                                         id="no_max_age" name="no_max_age" {{ $camp && $camp->no_max_age ? 'checked' : '' }}>
+                                        id="no_max_age" name="no_max_age" {{ $camp && $camp->no_max_age ? 'checked' : '' }}>
                                     <label class="form-check-label" for="no_max_age">No Max Age Limit</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label class="form-label" for="label">Max Age <span class="text-danger">*</span></label>
-                                <input required {{ $camp && $camp->no_max_age ? 'disabled' : '' }} type="number" min="0"
-                                    value="{{ $camp ? $camp->max_age : null }}" class="form-control" id="max_age"
-                                    name="max_age" placeholder="Enter max Age">
+                                <input required {{ $camp && $camp->no_max_age ? 'disabled' : '' }} type="number"
+                                    min="0" value="{{ $camp ? $camp->max_age : null }}" class="form-control"
+                                    id="max_age" name="max_age" placeholder="Enter max Age">
                                 <span class="text-danger" id="max_age_error"></span>
                             </div>
 
@@ -101,9 +103,23 @@
                                 <label class="form-label" for="label">Description <span
                                         class="text-danger">*</span></label>
 
-                                <textarea required class="form-control" name="description" id="description" cols="30"
-                                    rows="2">{{ $camp ? $camp->description : '' }}</textarea>
+                                <textarea required class="form-control" name="description" id="description" cols="30" rows="2">{{ $camp ? $camp->description : '' }}</textarea>
                                 <span class="text-danger" id="description_error"></span>
+                            </div>
+
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
+
+                                @if ($camp && $camp->image)
+                                    <img src="{{ $camp->image }}" alt="Camp Image" width="100%">
+                                    <br>
+                                @endif
+
+                                <label class="form-label" for="label">Image <span class="text-danger">*</span></label>
+                                <input required type="file" class="form-control" id="image" name="image"
+                                    placeholder="Enter image">
+                                <span class="text-danger" id="image_error"></span>
                             </div>
 
                         </div>

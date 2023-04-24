@@ -54,7 +54,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="{{ route("home") }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>
                 {{ config('app.name') }}</h2>
         </a>
@@ -65,6 +65,9 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{{ route('home') }}"
                     class="nav-item nav-link {{ request()->segment(1) == '' ? ' active' : '' }}">Home</a>
+
+                <a href="{{ route('home') }}"
+                    class="nav-item nav-link {{ request()->segment(1) == '' ? ' active' : '' }}">About Us</a>
 
 
                 <a href="{{ route('carts.index') }}" id="cartHeaderIcon"
@@ -85,8 +88,18 @@
                 {{-- <a href="contact.html"
                     class="nav-item nav-link {{ request()->segment(2) == 'contact' ? ' active' : '' }}">Contact</a> --}}
 
-                    @if (Auth::check())
-                    <a class="nav-item nav-link" style="cursor: pointer" onclick="document.getElementById('logout-form').submit()">Logout</a>
+
+                @if (Auth::check())
+                    <a href="{{ route('profile.index') }}"
+                        class=" nav-item nav-link {{ request()->segment(1) == 'profile' ? ' active' : '' }}">Profile</a>
+                @else
+                    <a href="{{ route('login') }}"
+                        class=" nav-item nav-link {{ request()->segment(1) == 'login' || request()->segment(1) == 'register' ? ' active' : '' }}">Join
+                        Now</a>
+                @endif
+                @if (Auth::check())
+                    <a class="nav-item nav-link" style="cursor: pointer"
+                        onclick="document.getElementById('logout-form').submit()">Logout</a>
 
                     <form action="{{ route('logout') }}" id="logout-form" method="POST">
                         @csrf
@@ -94,11 +107,6 @@
                     </form>
                 @endif
 
-                @if (Auth::check())
-                    <a href="{{ route('profile.index') }}" class=" nav-item nav-link {{ request()->segment(1) == 'profile' ? ' active' : '' }}">Profile</a>
-                @else
-                    <a href="{{ route('login') }}" class=" nav-item nav-link {{ request()->segment(1) == 'login' || request()->segment(1) == 'register' ? ' active' : '' }}">Join Now</a>
-                @endif
             </div>
             {{-- check if login --}}
 
@@ -134,8 +142,7 @@
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i
-                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i
                                 class="fab fa-linkedin-in"></i></a>

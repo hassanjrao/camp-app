@@ -31,6 +31,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Image</th>
                                 <th>Min Age</th>
                                 <th>Max Age</th>
                                 <th>Price</th>
@@ -52,6 +53,10 @@
 
                                     <td>{{ $ind + 1 }}</td>
                                     <td>{{ $camp['name'] }}</td>
+                                    <td>
+                                        <img class="img-fluid" src="{{ $camp['camp_image'] }}" alt="">
+
+                                    </td>
                                     <td>{{ $camp['min_age'] }}</td>
                                     <td>
                                         @if($camp['no_max_age'])

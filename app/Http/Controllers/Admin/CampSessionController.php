@@ -18,6 +18,7 @@ class CampSessionController extends Controller
     {
         $sessions=CampSession::latest()->with(["camp","campSessionSlots"])->get();
 
+
         return view("admin.sessions.index",compact("sessions"));
     }
 
