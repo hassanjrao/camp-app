@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             CampImageSeeder::class,
             CampSessionSeeder::class,
             CampSessionSlotSeeder::class,
+            CarousalSeeder::class,
+            AboutUsSeeder::class,
         ]);
     }
 }

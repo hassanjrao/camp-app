@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use App\Models\Camp;
+use App\Models\Carousal;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -42,6 +44,10 @@ class HomeController extends Controller
             ];
         });
 
-        return view('front.index',compact('camps'));
+        $carousal=Carousal::first();
+
+        $aboutUs=AboutUs::first();
+
+        return view('front.index',compact('camps','carousal','aboutUs'));
     }
 }

@@ -117,7 +117,7 @@
                                 @endif
 
                                 <label class="form-label" for="label">Image <span class="text-danger">*</span></label>
-                                <input required type="file" class="form-control" id="image" name="image"
+                                <input  type="file" class="form-control" id="image" name="image"
                                     placeholder="Enter image">
                                 <span class="text-danger" id="image_error"></span>
                             </div>

@@ -257,6 +257,16 @@
                             </a>
                         </li>
 
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->segment(2) == 'orders' ? ' active' : '' }}"
+                                href="{{ route('admin.orders.index') }}">
+
+                                <i class="nav-main-link-icon fas fa-tags"></i>
+                                <span class="nav-main-link-name">Orders</span>
+                            </a>
+                        </li>
+
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->segment(2) == 'camps' && request()->segment(4) != 'sessions' ? ' active' : '' }}"
                                 href="{{ route('admin.camps.index') }}">
@@ -284,13 +294,22 @@
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->segment(2) == 'orders' ? ' active' : '' }}"
-                                href="{{ route('admin.orders.index') }}">
-                                
-                                <i class="nav-main-link-icon fas fa-tags"></i>
-                                <span class="nav-main-link-name">Orders</span>
+                            <a class="nav-main-link{{ request()->segment(2) == 'carousals' ? ' active' : '' }}"
+                                href="{{ route('admin.carousals.edit',["carousal"=>1]) }}">
+                                <i class="fas fa-clock nav-main-link-icon"></i>
+                                <span class="nav-main-link-name">Carousal</span>
                             </a>
                         </li>
+
+
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->segment(2) == 'about-us' ? ' active' : '' }}"
+                                href="{{ route('admin.about-us.edit',["about_u"=>1]) }}">
+                                <i class="fas fa-clock nav-main-link-icon"></i>
+                                <span class="nav-main-link-name">About Us</span>
+                            </a>
+                        </li>
+
 
 
                     </ul>
@@ -440,7 +459,6 @@
     <!-- Page JS Code -->
     <script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
 
     <script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
 
@@ -467,7 +485,6 @@
 
 
 
-    @yield('js_after')
 
     <script>
         function confirmDelete(id) {

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\CampController as AdminCampController;
 use App\Http\Controllers\Admin\CampSessionController;
 use App\Http\Controllers\Admin\CampSessionSlotController;
+use App\Http\Controllers\Admin\CarousalController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\CampController;
@@ -66,5 +68,9 @@ Route::middleware(["auth"])->group(function () {
         Route::resource("slots", CampSessionSlotController::class);
 
         Route::resource("orders",OrderController::class);
+
+        Route::resource("carousals",CarousalController::class);
+
+        Route::resource("about-us",AboutUsController::class);
     });
 });

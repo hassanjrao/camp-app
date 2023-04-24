@@ -49,7 +49,7 @@ class CampController extends Controller
 
         $camp = Camp::findorfail($id);
 
-        $camp->image=$camp->campImages->first()->image;
+        $camp->image=$camp->campImages->first() ? asset("storage/".$camp->campImages->first()->image) : null;
 
         $campSessions=$camp->campSessions()->whereHas("campSessionSlots")->with('campSessionSlots')->get();
 
