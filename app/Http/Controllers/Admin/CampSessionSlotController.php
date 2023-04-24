@@ -17,7 +17,10 @@ class CampSessionSlotController extends Controller
      */
     public function index()
     {
-        $slots=CampSessionSlot::latest()->with(["campSession","campSession.camp"])->get();
+        $slots=CampSessionSlot::latest()
+        ->whereHas('campSession')
+        ->whereHas('campSession.camp')
+        ->with(["campSession","campSession.camp"])->get();
 
         return view("admin.slots.index",compact("slots"));
     }
