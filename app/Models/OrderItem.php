@@ -19,12 +19,12 @@ class OrderItem extends Model
 
     public function campSession()
     {
-        return $this->belongsTo(CampSession::class);
+        return $this->belongsTo(CampSession::class)->withTrashed();
     }
 
     public function campSessionSlot()
     {
-        return $this->belongsTo(CampSessionSlot::class);
+        return $this->belongsTo(CampSessionSlot::class)->withTrashed();
     }
 
 
