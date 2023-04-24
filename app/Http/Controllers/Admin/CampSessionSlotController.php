@@ -82,7 +82,10 @@ class CampSessionSlotController extends Controller
      */
     public function edit($id)
     {
-        $slot=CampSessionSlot::with(["campSession","campSession.camp"])->findOrFail($id);
+        $slot=CampSessionSlot::
+        whereHas('campSession')
+        ->whereHas('campSession.camp')
+        ->with(["campSession","campSession.camp"])->findOrFail($id);
 
         $camps=Camp::all();
         $sessions=CampSession::where("camp_id",$slot->campSession->camp_id)->get();
