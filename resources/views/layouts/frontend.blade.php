@@ -68,8 +68,8 @@
                 <a href="{{ route('home') }}"
                     class="nav-item nav-link {{ request()->segment(1) == '' ? ' active' : '' }}">Home</a>
 
-                <a href="{{ route('home') }}"
-                    class="nav-item nav-link {{ request()->segment(1) == '' ? ' active' : '' }}">About Us</a>
+                <a href="#about-us"
+                    class="nav-item nav-link">About Us</a>
 
 
                 <a href="{{ route('carts.index') }}" id="cartHeaderIcon"
