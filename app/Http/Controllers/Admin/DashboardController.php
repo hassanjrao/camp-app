@@ -15,8 +15,9 @@ class DashboardController extends Controller
     public function index(){
 
         $camps=Camp::all()->count();
-        $sessions=CampSession::all()->count();
-        $slots=CampSessionSlot::all()->count();
+        $sessions=CampSession::whereHas('camp')->get()->count();
+        $slots=CampSessionSlot::whereHas('campSession')
+        ->whereHas('campSession.camp')->get()->count();
         $users=User::all()->count();
         $orders=Order::all()->count();
 
