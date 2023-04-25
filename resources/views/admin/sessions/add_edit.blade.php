@@ -36,6 +36,14 @@
 
                 <div class="row push justify-content-center">
 
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                        <label class="form-label" for="label">Name <span class="text-danger">*</span></label>
+                        <input required type="text" value="{{ $session ? $session->name : null }}"
+                            class="form-control" id="name" name="name" placeholder="Enter Name">
+                        <span class="text-danger" id="name_error"></span>
+                    </div>
+
+
 
                     <div class="col-lg-3 col-md-3 col-sm-12">
                         <label class="form-label" for="label">Camp <span class="text-danger">*</span></label>

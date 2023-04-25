@@ -70,6 +70,7 @@ class Carts extends Component
                 })->map(function ($session) use ($cartItems) {
                     return [
                         "id" => $session->id,
+                        "name" => $session->name,
                         // convert date to
                         "start_date" => $session->start_date,
                         "end_date" => $session->end_date,

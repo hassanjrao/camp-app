@@ -48,12 +48,14 @@ class CampSessionController extends Controller
     {
         $request->validate([
             "camp_id"=>"required|exists:camps,id",
+            "name"=>"required ",
             "start_date"=>"required|date",
             "end_date"=>"required|date",
         ]);
 
         $session=CampSession::create([
             "camp_id"=>$request->camp_id,
+            "name"=>$request->name,
             "start_date"=>$request->start_date,
             "end_date"=>$request->end_date,
         ]);
@@ -98,6 +100,7 @@ class CampSessionController extends Controller
     {
         $request->validate([
             "camp_id"=>"required|exists:camps,id",
+            "name"=>"required ",
             "start_date"=>"required|date",
             "end_date"=>"required|date",
         ]);
@@ -106,6 +109,7 @@ class CampSessionController extends Controller
 
         $session->update([
             "camp_id"=>$request->camp_id,
+            "name"=>$request->name,
             "start_date"=>$request->start_date,
             "end_date"=>$request->end_date,
         ]);

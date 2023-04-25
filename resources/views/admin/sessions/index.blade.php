@@ -48,7 +48,7 @@
                                 <tr>
 
                                     <td>{{ $ind + 1 }}</td>
-                                    <td>Session {{ $session->id }}</td>
+                                    <td> {{ $session->name }}</td>
                                     <td>{{ $session->camp->name }}</td>
                                     <td>{{ $session->campSessionSlots->count() }}</td>
                                     <td>{{ $session->start_date }}</td>

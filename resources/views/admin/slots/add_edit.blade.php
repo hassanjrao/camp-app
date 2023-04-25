@@ -61,7 +61,7 @@
                             @foreach ($sessions as $session)
                                 <option value="{{ $session->id }}"
                                     {{ $slot && $slot->session_id == $session->id ? 'selected' : null }}>
-                                  Session  {{ $session->id }}</option>
+                                    {{ $session->name }}</option>
                             @endforeach
                         </select>
 
@@ -133,7 +133,7 @@
                     let html = '<option value="">Select Session</option>';
 
                     sessions.forEach(session => {
-                        html += `<option value="${session.id}">Session ${session.id}</option>`;
+                        html += `<option value="${session.id}"> ${session.name}</option>`;
                     });
 
                     $('#session_id').html(html);

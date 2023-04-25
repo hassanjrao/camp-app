@@ -57,6 +57,7 @@ class CampController extends Controller
 
             return [
                 "id"=>$session->id,
+                "name"=>$session->name,
                 "image"=>$session->image,
                 // convert date to
                 "start_date"=>$session->start_date,

@@ -49,7 +49,7 @@
                                     <td>{{ $ind + 1 }}</td>
                                     <td>{{ $slot->campSession->camp->name }}</td>
                                     <td>
-                                        Session {{ $slot->campSession->id }}
+                                         {{ $slot->campSession->name }}
                                     </td>
                                     <td>{{ $slot->start_time }}</td>
                                     <td>{{ $slot->end_time }}</td>

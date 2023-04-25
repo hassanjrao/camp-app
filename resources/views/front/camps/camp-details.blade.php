@@ -30,7 +30,7 @@
 
             @foreach ($campSessions as $session)
                 <div class="text-center wow fadeInUp mb-2" data-wow-delay="0.1s">
-                    <h4 class="section-title bg-white text-center text-primary px-3"> Session From
+                    <h4 class="section-title bg-white text-center text-primary px-3"> Session {{ $session["name"] }} From
                         {{ $session['start_date'] }} to {{ $session['end_date'] }}</h4>
                 </div>
                 <div class="row g-4 justify-content-center mb-4">

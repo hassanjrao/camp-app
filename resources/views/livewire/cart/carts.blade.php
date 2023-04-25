@@ -35,7 +35,8 @@
                                             <td rowspan="{{ count($camp['sessions']) }}">{{ $camp['price'] }}
                                                 {{ config('app.currency') }}</td>
                                         @endif
-                                        <td>{{ $session['start_date'] }} - {{ $session['end_date'] }}</td>
+                                        <td><b>{{ $session['name'] }}</b> {{ $session['start_date'] }} -
+                                            {{ $session['end_date'] }}</td>
                                         <td>
                                             @foreach ($session['slots'] as $slot)
                                                 <span wire:click="removeFromCart({{ $slot['id'] }})">
