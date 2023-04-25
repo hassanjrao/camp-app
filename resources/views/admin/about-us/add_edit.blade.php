@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-lg-4 ">
                                 <label class="form-label" for="label">Video</label>
-                                <input required name="video_link" id="video_link" class="form-control" type="file">
+                                <input name="video_link" id="video_link" class="form-control" type="file">
                             </div>
                         </div>
 

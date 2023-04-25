@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutUsController extends Controller
 {
@@ -58,9 +59,9 @@ class AboutUsController extends Controller
      */
     public function edit($id)
     {
-        $aboutUs=AboutUs::first();
+        $aboutUs = AboutUs::first();
 
-        return view("admin.about-us.add_edit",compact("aboutUs"));
+        return view("admin.about-us.add_edit", compact("aboutUs"));
     }
 
     /**
@@ -74,21 +75,31 @@ class AboutUsController extends Controller
     {
 
         $request->validate([
-            "description"=>"required",
-            "image"=>"nullable|image",
-            "video_link"=>"required"
+            "description" => "required",
+            "image" => "nullable|image",
+            "video_link" => "nullable"
         ]);
 
-        $aboutUs=AboutUs::first();
+        $aboutUs = AboutUs::first();
 
-        $video=$request->file("video_link")->store("about-us");
+        if ($request->video_link) {
 
+            if ($aboutUs->video_link) {
+                Storage::delete( $aboutUs->video_link);
+            }
+            $video = $request->file("video_link")->store("about-us");
+
+            $aboutUs->update([
+
+                "video_link" => $video
+            ]);
+        }
         $aboutUs->update([
-            "description"=>$request->description,
-            "video_link"=>$video
+            "description" => $request->description,
+
         ]);
 
-        return redirect()->back()->with("success","About us updated successfully");
+        return redirect()->back()->with("success", "About us updated successfully");
     }
 
     /**
