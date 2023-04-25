@@ -37,15 +37,17 @@
                         <div class="row mb-4">
 
                             <div class="col-lg-12 ">
+                                <label class="form-label" for="label">Video</label>
+                                <input required name="video_link" id="video_link" class="form-control" type="file">
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+
+                            <div class="col-lg-12 ">
                                 <label class="form-label" for="label">Description</label>
                                 <textarea name="description" id="editorAboutUs" class="form-control" cols="30" rows="50">{{ $aboutUs && $aboutUs->description ? $aboutUs->description : '' }}</textarea>
                             </div>
-
-
-
-
-
-
                         </div>
 
 

@@ -37,8 +37,18 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="{{ asset("front-assets/img/about.jpg") }}" alt=""
-                            style="object-fit: cover;">
+                        {{-- <iframe width="420" height="345" src="">
+                        </iframe> --}}
+
+                        <video width="600" controls>
+                            <source src="{{ asset("storage/".$aboutUs->video_link) }}" type="video/mp4">
+                            {{-- <source src="mov_bbb.ogg" type="video/ogg"> --}}
+                            Your browser does not support HTML video.
+                          </video>
+
+
+                        {{-- <iframe width="560" height="315" src="{{ $aboutUs->video_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --}}
+
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">

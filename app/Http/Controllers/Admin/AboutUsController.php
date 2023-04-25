@@ -72,15 +72,20 @@ class AboutUsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $request->validate([
             "description"=>"required",
             "image"=>"nullable|image",
+            "video_link"=>"required"
         ]);
 
         $aboutUs=AboutUs::first();
 
+        $video=$request->file("video_link")->store("about-us");
+
         $aboutUs->update([
             "description"=>$request->description,
+            "video_link"=>$video
         ]);
 
         return redirect()->back()->with("success","About us updated successfully");
