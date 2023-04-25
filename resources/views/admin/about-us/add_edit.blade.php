@@ -36,12 +36,24 @@
 
                         <div class="row mb-4">
 
-                            <div class="col-lg-12 ">
+                            <div class="col-lg-8 ">
+
+
+                                @if ($aboutUs)
+                                    <video width="600" controls>
+                                        <source src="{{ asset('storage/' . $aboutUs->video_link) }}" type="video/mp4">
+                                        {{-- <source src="mov_bbb.ogg" type="video/ogg"> --}}
+                                        Your browser does not support HTML video.
+                                    </video>
+                                @endif
+                            </div>
+                            <div class="col-lg-4 ">
                                 <label class="form-label" for="label">Video</label>
                                 <input required name="video_link" id="video_link" class="form-control" type="file">
                             </div>
                         </div>
 
+                        <br>
                         <div class="row mb-4">
 
                             <div class="col-lg-12 ">
@@ -103,15 +115,15 @@
 
 @section('js_after')
 
-<script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
 
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editorAboutUs'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editorAboutUs'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 
 
