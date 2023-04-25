@@ -296,7 +296,8 @@
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->segment(2) == 'carousals' ? ' active' : '' }}"
                                 href="{{ route('admin.carousals.edit',["carousal"=>1]) }}">
-                                <i class="fas fa-clock nav-main-link-icon"></i>
+
+                                <i class="fas fa-newspaper  nav-main-link-icon"></i>
                                 <span class="nav-main-link-name">Carousal</span>
                             </a>
                         </li>
@@ -305,7 +306,8 @@
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->segment(2) == 'about-us' ? ' active' : '' }}"
                                 href="{{ route('admin.about-us.edit',["about_u"=>1]) }}">
-                                <i class="fas fa-clock nav-main-link-icon"></i>
+
+                                <i class="fas fa-info  nav-main-link-icon"></i>
                                 <span class="nav-main-link-name">About Us</span>
                             </a>
                         </li>
