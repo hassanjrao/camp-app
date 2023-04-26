@@ -113,23 +113,27 @@
                                 </div>
                                 </a>
                             </div>
-                            <a href="{{ route('camp.show', ['id' => $camp['id'], 'slug' => $camp['slug']]) }}">
-                                <div class="text-center p-4 pb-0">
+                            @if (Auth::check() && !in_array(Auth::user()->age, $camp['age_range_array']))
+                                <a href="#">
+                                @else
+                                    <a href="{{ route('camp.show', ['id' => $camp['id'], 'slug' => $camp['slug']]) }}">
+                            @endif
+                            <div class="text-center p-4 pb-0">
 
-                                    <h5>{{ $camp['name'] }}</h5>
+                                <h5>{{ $camp['name'] }}</h5>
 
-                                    <h6>{{ config('app.currency') }} {{ $camp['price'] }}</h6>
+                                <h6>{{ config('app.currency') }} {{ $camp['price'] }}</h6>
 
-                                </div>
-                                <div class="d-flex border-top">
-                                    <small class="flex-fill text-center border-end py-2"><i
-                                            class="fa fa-user-tie text-primary me-2"></i>Age:
-                                        {{ $camp['age_range'] }}</small>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i
+                                        class="fa fa-user-tie text-primary me-2"></i>Age:
+                                    {{ $camp['age_range'] }}</small>
 
-                                    <small class="flex-fill text-center py-2"><i
-                                            class="fa fa-user text-primary me-2"></i>Sessions:
-                                        {{ $camp['total_sessions'] }}</small>
-                                </div>
+                                <small class="flex-fill text-center py-2"><i
+                                        class="fa fa-user text-primary me-2"></i>Sessions:
+                                    {{ $camp['total_sessions'] }}</small>
+                            </div>
                             </a>
                         </div>
                     </div>
