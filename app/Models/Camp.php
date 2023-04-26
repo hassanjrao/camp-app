@@ -28,7 +28,7 @@ class Camp extends Model
     protected function createdAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => date('m/d/y H:i A', strtotime($value)),
+            get: fn ($value) => date('m/d/y h:i a', strtotime($value)),
 
         );
     }
@@ -36,7 +36,7 @@ class Camp extends Model
     protected function updatedAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => date('m/d/y H:i A', strtotime($value)),
+            get: fn ($value) => date('m/d/y h:i a', strtotime($value)),
 
         );
     }
