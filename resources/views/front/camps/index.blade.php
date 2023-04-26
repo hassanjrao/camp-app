@@ -21,61 +21,85 @@
     <!-- Header End -->
 
 
-        <!-- camps Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title bg-white text-center text-primary px-3">Camps</h6>
-                    {{-- <h1 class="mb-5">Popular camps</h1> --}}
-                </div>
-                <div class="row g-4 justify-content-center">
+    <!-- camps Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Camps</h6>
+                {{-- <h1 class="mb-5">Popular camps</h1> --}}
+            </div>
+            <div class="row g-4 justify-content-center">
 
-                    @foreach ($camps as $camp)
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="course-item bg-light">
+                @foreach ($camps as $camp)
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        {{-- @dump($camp['age_range_array']) --}}
 
-                                <div class="position-relative overflow-hidden">
-                                    <a href="{{ route('camp.show',["id"=>$camp['id'],"slug"=>$camp['slug']]) }}">
-                                        <img class="img-fluid" src="{{ $camp['camp_image'] }}" alt="" style="height: 225px !important; width:100% !important;">
-                                        <div
-                                            class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                        <div class="course-item bg-light">
 
-                                                <a href="{{ route('camp.show',["id"=>$camp['id'],"slug"=>$camp['slug']]) }}" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                                <a href="{{ route('login') }}" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
+                            <div class="position-relative overflow-hidden">
 
-                                        </div>
-                                    </a>
+                                @if (Auth::check() && !in_array(Auth::user()->age, $camp['age_range_array']))
+                                    <a href="#">
+                                    @else
+                                        <a href="{{ route('camp.show', ['id' => $camp['id'], 'slug' => $camp['slug']]) }}">
+                                @endif
+                                <img class="img-fluid" src="{{ $camp['camp_image'] }}" alt=""
+                                    style="height: 225px !important; width:100% !important;">
+                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+
+
+
+                                    @if (Auth::check())
+                                        @if (!in_array(Auth::user()->age, $camp['age_range_array']))
+                                            <a href="#" class="flex-shrink-0 btn btn-sm btn-danger px-3 border-end"
+                                                style="border-radius: 30px; border:none">You are not eligible for this
+                                                age group</a>
+                                        @else
+                                            <a href="{{ route('camp.show', ['id' => $camp['id'], 'slug' => $camp['slug']]) }}"
+                                                class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
+                                                style="border-radius: 30px 0 0 30px;">Read More</a>
+                                            <a href="{{ route('login') }}" class="flex-shrink-0 btn btn-sm btn-primary px-3"
+                                                style="border-radius: 0 30px 30px 0;">Join Now</a>
+                                        @endif
+                                    @else
+                                        <a href="{{ route('camp.show', ['id' => $camp['id'], 'slug' => $camp['slug']]) }}"
+                                            class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
+                                            style="border-radius: 30px 0 0 30px;">Read More</a>
+                                        <a href="{{ route('login') }}" class="flex-shrink-0 btn btn-sm btn-primary px-3"
+                                            style="border-radius: 0 30px 30px 0;">Join Now</a>
+                                    @endif
+
+
                                 </div>
-                                <a href="{{ route('camp.show',["id"=>$camp['id'],"slug"=>$camp['slug']]) }}">
-                                    <div class="text-center p-4 pb-0">
-
-                                        <h5>{{ $camp['name'] }}</h5>
-
-                                        <h6>{{ config("app.currency") }} {{ $camp['price'] }}</h6>
-
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-user-tie text-primary me-2"></i>Age:
-                                            {{ $camp['age_range'] }}</small>
-
-                                        <small class="flex-fill text-center py-2"><i
-                                                class="fa fa-user text-primary me-2"></i>Sessions:
-                                            {{ $camp['total_sessions'] }}</small>
-                                    </div>
                                 </a>
                             </div>
-                        </div>
-                    @endforeach
+                            <a href="{{ route('camp.show', ['id' => $camp['id'], 'slug' => $camp['slug']]) }}">
+                                <div class="text-center p-4 pb-0">
 
-                </div>
+                                    <h5>{{ $camp['name'] }}</h5>
+
+                                    <h6>{{ config('app.currency') }} {{ $camp['price'] }}</h6>
+
+                                </div>
+                                <div class="d-flex border-top">
+                                    <small class="flex-fill text-center border-end py-2"><i
+                                            class="fa fa-user-tie text-primary me-2"></i>Age:
+                                        {{ $camp['age_range'] }}</small>
+
+                                    <small class="flex-fill text-center py-2"><i
+                                            class="fa fa-user text-primary me-2"></i>Sessions:
+                                        {{ $camp['total_sessions'] }}</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+
             </div>
         </div>
-        <!-- camps End -->
-
-
+    </div>
+    <!-- camps End -->
 @endsection
 
 @push('scripts')
-
 @endpush

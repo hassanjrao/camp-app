@@ -28,6 +28,9 @@ class HomeController extends Controller
                 $age_range.=" >";
             }
 
+            $ageRangeArr=range($camp->min_age,$camp->no_max_age ? 200 : $camp->max_age);
+
+
             return [
                 "id"=>$camp->id,
                 "name"=>$camp->name,
@@ -36,6 +39,8 @@ class HomeController extends Controller
                 "description"=>$camp->description,
                 "min_age"=>$camp->min_age,
                 "max_age"=>$camp->max_age,
+                "age_range_array"=>$ageRangeArr,
+                
                 "age_range"=>$age_range,
                 "no_max_age"=>$camp->no_max_age,
                 "max_registration"=>$camp->max_registration,

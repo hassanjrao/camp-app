@@ -14,6 +14,11 @@ class Account extends Component
     public $address;
     public $age;
     public $parents_name;
+
+    public $emergency_contact_name;
+    public $emergency_contact_phone;
+    public $parents_email;
+    public $parents_phone;
     public $gender = "not specified";
 
 
@@ -26,11 +31,17 @@ class Account extends Component
         $this->validate([
             "name"=>"required",
             "email"=>"required|email|unique:users,email,".auth()->user()->id,
-            "phone"=>"required",
+            "phone"=>"required|unique:users,phone,".auth()->user()->id,
             "address"=>"required",
             "age"=>"required|numeric",
             "parents_name"=>"required",
             "gender"=>"required|in:male,female,not specified",
+            "parents_email"=>"required|email|unique:users,parents_email,".auth()->user()->id,
+            "parents_phone"=>"required|unique:users,parents_phone,".auth()->user()->id,
+            'emergency_contact_name'=>'required',
+            'emergency_contact_phone'=>'required|unique:users,emergency_contact_phone,'. auth()->user()->id,
+
+
             // "selectedCamp"=>"required|exists:camps,id"
         ]);
 
@@ -50,7 +61,12 @@ class Account extends Component
             "address" => $this->address,
             "age" => $this->age,
             "parents_name" => $this->parents_name,
-            "gender" => $this->gender
+            "gender" => $this->gender,
+            "emergency_contact_name"=>$this->emergency_contact_name,
+            "emergency_contact_phone"=>$this->emergency_contact_phone,
+            "parents_email"=>$this->parents_email,
+            "parents_phone"=>$this->parents_phone,
+
         ]);
 
         if ($this->password) {
@@ -81,6 +97,10 @@ class Account extends Component
         $this->age = $user->age;
         $this->parents_name = $user->parents_name;
         $this->gender = $user->gender;
+        $this->emergency_contact_name=$user->emergency_contact_name;
+        $this->emergency_contact_phone=$user->emergency_contact_phone;
+        $this->parents_email=$user->parents_email;
+        $this->parents_phone=$user->parents_phone;
     }
 
     public function render()

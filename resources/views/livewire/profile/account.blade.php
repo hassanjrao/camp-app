@@ -44,26 +44,9 @@
 
 
 
-                            {{-- <div class="row mb-3">
-
-                                <div class="col-md-6">
-                                    <label for="selectedCamp" class=" text-md-end">{{ __('Camp') }}</label>
-
-                                    <select wire:model.defer='selectedCamp'
-                                        class="form-select @error('selectedCamp') is-invalid @enderror">
-                                        <option value="">Select Camp</option>
-                                        @foreach ($camps as $camp)
-                                            <option value="{{ $camp['id'] }}">{{ $camp['name'] }}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="row mb-3">
 
 
-                                    @error('selectedCamp')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
 
                                 <div class="col-md-6">
                                     <label for="phone" class=" text-md-end">{{ __('Phone') }}</label>
@@ -80,11 +63,6 @@
                                 </div>
 
 
-                            </div> --}}
-
-
-                            <div class="row mb-3">
-
                                 <div class="col-md-6">
 
                                     <label for="age" class=" text-md-end">{{ __('Age') }}</label>
@@ -100,7 +78,53 @@
                                     @enderror
                                 </div>
 
+
+                            </div>
+
+                            <div class="row mb-3">
+
+
+
                                 <div class="col-md-6">
+                                    <label for="emergency_contact_name" class=" text-md-end">{{ __('Emergency Contact Name') }}</label>
+
+                                    <input id="emergency_contact_name" type="text"
+                                        class="form-control @error('emergency_contact_name') is-invalid @enderror" wire:model.defer='emergency_contact_name'
+                                        autocomplete="emergency_contact_name" autofocus>
+
+                                    @error('emergency_contact_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label for="emergency_contact_phone" class=" text-md-end">{{ __('Emergency Contact Phone') }}</label>
+
+                                    <input id="emergency_contact_phone" type="tel"
+                                        class="form-control @error('emergency_contact_phone') is-invalid @enderror" wire:model.defer='emergency_contact_phone'
+                                        autocomplete="emergency_contact_phone" autofocus>
+
+                                    @error('emergency_contact_phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                            <div class="row mb-3">
+
+
+                                <div class="col-md-12">
                                     <label for="address" class=" text-md-end">{{ __('Address') }}</label>
 
                                     <input id="address" type="tel"
@@ -120,41 +144,74 @@
 
 
 
-                            <div class="row mb-3">
 
-                                <div class="col-md-6">
-                                    <label for="parents_name" class=" text-md-end">{{ __('Parents Name') }}</label>
 
-                                    <input id="parents_name" type="text"
-                                        class="form-control @error('parents_name') is-invalid @enderror"
-                                        wire:model.defer='parents_name' autocomplete="parents_name" autofocus>
 
-                                    @error('parents_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        <div class="row mb-3">
 
-                                <div class="col-md-6">
+                            <div class="col-md-6">
+                                <label for="parents_name" class=" text-md-end">{{ __('Parents Name') }}</label>
 
-                                    <label for="gender" class=" text-md-end">{{ __('Gender') }}</label>
+                                <input id="parents_name" type="text"
+                                    class="form-control @error('parents_name') is-invalid @enderror"
+                                    wire:model.defer='parents_name' autocomplete="parents_name" autofocus>
 
-                                    <select id="gender" class="form-select" wire:model='gender'
-                                        @error('gender') is-invalid @enderror>
-                                        <option>Select Gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option selected value="not specified">Not Specified</option>
-                                    </select>
-
-                                    @error('gender')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                                @error('parents_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                            <div class="col-md-6">
+                                <label for="parents_email" class=" text-md-end">{{ __('Parents Email') }}</label>
+
+                                <input id="parents_email" type="email"
+                                    class="form-control @error('parents_email') is-invalid @enderror"
+                                    wire:model.defer='parents_email' autocomplete="parents_email" autofocus>
+
+                                @error('parents_email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="parents_phone" class=" text-md-end">{{ __('Parents Phone') }}</label>
+
+                                <input id="parents_phone" type="tel"
+                                    class="form-control @error('parents_phone') is-invalid @enderror"
+                                    wire:model.defer='parents_phone' autocomplete="parents_phone" autofocus>
+
+                                @error('parents_phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label for="gender" class=" text-md-end">{{ __('Gender') }}</label>
+
+                                <select id="gender" class="form-select" wire:model='gender' @error('gender') is-invalid @enderror>
+                                    <option >Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option selected value="not specified">Not Specified</option>
+                                </select>
+
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
 
 
