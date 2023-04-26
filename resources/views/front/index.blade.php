@@ -35,12 +35,11 @@
     <div class="container-xxl py-5" id="about-us">
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                    <div class="position-relative h-100">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         {{-- <iframe width="420" height="345" src="">
                         </iframe> --}}
 
-                        <video width="600" controls>
+                        <video width="600" controls class="w-100">
                             <source src="{{ asset("storage/".$aboutUs->video_link) }}" type="video/mp4">
                             {{-- <source src="mov_bbb.ogg" type="video/ogg"> --}}
                             Your browser does not support HTML video.
@@ -49,7 +48,6 @@
 
                         {{-- <iframe width="560" height="315" src="{{ $aboutUs->video_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --}}
 
-                    </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
