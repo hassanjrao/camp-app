@@ -39,7 +39,7 @@
                         {{-- <iframe width="420" height="345" src="">
                         </iframe> --}}
 
-                        <video width="600" controls class="w-100">
+                        <video  controls class="w-100">
                             <source src="{{ asset("storage/".$aboutUs->video_link) }}" type="video/mp4">
                             {{-- <source src="mov_bbb.ogg" type="video/ogg"> --}}
                             Your browser does not support HTML video.
