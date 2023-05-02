@@ -24,6 +24,9 @@ class Register extends Component
     public $parents_email;
     public $parents_phone;
     public $camps=[];
+    public $city;
+    public $state;
+    public $zip;
 
 
     public function register(){
@@ -44,6 +47,9 @@ class Register extends Component
             "parents_phone"=>"required|unique:users,parents_phone",
             "parents_name"=>"required",
             "gender"=>"required|in:male,female,not specified",
+            "city"=>"required",
+            "state"=>"required",
+            "zip"=>"required",
             // "selectedCamp"=>"required|exists:camps,id"
         ]);
 
@@ -61,6 +67,9 @@ class Register extends Component
             "emergency_contact_phone"=>$this->emergency_contact_phone,
             "parents_email"=>$this->parents_email,
             "parents_phone"=>$this->parents_phone,
+            "city"=>$this->city,
+            "state"=>$this->state,
+            "zip"=>$this->zip,
 
             // "camp_id"=>$this->selectedCamp,
         ]);

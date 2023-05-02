@@ -24,13 +24,22 @@
     <!-- Header End -->
 
 
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-3">
         <div class="container">
 
+            <div class="row g-4 mb-5">
+
+                <div class="col-lg-12">
+                    {!! $camp->description !!}
+                </div>
+
+
+
+            </div>
 
             @foreach ($campSessions as $session)
                 <div class="text-center wow fadeInUp mb-2" data-wow-delay="0.1s">
-                    <h4 class="section-title bg-white text-center text-primary px-3"> Session {{ $session["name"] }} From
+                    <h4 class="section-title bg-white text-center text-primary px-3"> Session {{ $session['name'] }} From
                         {{ $session['start_date'] }} to {{ $session['end_date'] }}</h4>
                 </div>
                 <div class="row g-4 justify-content-center mb-4">
@@ -167,6 +176,5 @@
             });
 
         }
-
     </script>
 @endpush

@@ -103,7 +103,7 @@
                                 <label class="form-label" for="label">Description <span
                                         class="text-danger">*</span></label>
 
-                                <textarea required class="form-control" name="description" id="description" cols="30" rows="2">{{ $camp ? $camp->description : '' }}</textarea>
+                                <textarea id="editorAboutUs" class="form-control" name="description" id="description" cols="30" rows="2">{{ $camp ? $camp->description : '' }}</textarea>
                                 <span class="text-danger" id="description_error"></span>
                             </div>
 
@@ -117,7 +117,7 @@
                                 @endif
 
                                 <label class="form-label" for="label">Image <span class="text-danger">*</span></label>
-                                <input  type="file" class="form-control" id="image" name="image"
+                                <input type="file" class="form-control" id="image" name="image"
                                     placeholder="Enter image">
                                 <span class="text-danger" id="image_error"></span>
                             </div>
@@ -152,6 +152,18 @@
 @endsection
 
 @section('js_after')
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editorAboutUs'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+
 
     <script>
         function maxAgeLimitChange(e) {
