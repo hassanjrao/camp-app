@@ -142,7 +142,7 @@
                     <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>1021 Shrewsbury Avenue,Suite 1023</p>
 
                     <p class="mb-2"><i class="fa fa-globe me-3"></i> Shrewsbury, New Jersey, 07701</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>tel: <a href="tel:201-783-3050">201-783-3050</a></p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>tel: <a class="text-white" href="tel:201-783-3050">201-783-3050</a></p>
                     </p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" target="_blank" href="https://twitter.com/yagaskilz?s=11&t=tFScwJTpRsaGLelgLpLHMQ"><i class="fab fa-twitter"></i></a>
