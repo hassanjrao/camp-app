@@ -144,9 +144,9 @@
                     <p class="mb-2"><i class="fa fa-globe me-3"></i> Shrewsbury, New Jersey, 07701</p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i> [201-783-3050] (tel: 201-783-3050)</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" target="_blank" href="ttps://twitter.com/yagaskilz?s=11&t=tFScwJTpRsaGLelgLpLHMQ"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" target="_blank" href="https://twitter.com/yagaskilz?s=11&t=tFScwJTpRsaGLelgLpLHMQ"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" target="_blank" href="https://m.facebook.com/people/Yagaskilz-Sports-Development/100063665556389/"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" target="_blank" href=" https://instagram.com/yagaskilz?igshid=YmMyMTA2M2Y="><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social" target="_blank" href="https://instagram.com/yagaskilz?igshid=YmMyMTA2M2Y="><i class="fab fa-instagram"></i></a>
                         {{-- <a class="btn btn-outline-light btn-social" href=""><i
                                 class="fab fa-linkedin-in"></i></a> --}}
                     </div>
