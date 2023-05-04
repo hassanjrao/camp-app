@@ -98,6 +98,30 @@
                         </tbody>
                     </table>
 
+                    <div class="row justify-content-end">
+                        {{-- apply discount --}}
+
+                        <div class="col-lg-8 text-right">
+
+                            <form wire:submit.prevent='applyDiscount'>
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-alt"
+                                        wire:model.defer='enteredDiscountCode' {{ $discountApplied ? 'disabled' : '' }}
+                                        placeholder="Enter Discount Code" autocomplete="off">
+                                    <button type="submit" class="btn btn-dark"
+                                        {{ $discountApplied ? 'disabled' : '' }}>Apply
+                                        Discount</button>
+                                </div>
+
+                                @error('enteredDiscountCode')
+                                    <span class=" text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </form>
+                        </div>
+                    </div>
+
                     <br><br>
 
                     @if (count($camps) > 0)

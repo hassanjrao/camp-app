@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Cart;
 
 use App\Models\Camp;
 use App\Models\CampSessionSlot;
+use App\Models\Discount;
 use Livewire\Component;
 
 class Carts extends Component
@@ -17,6 +18,41 @@ class Carts extends Component
         "total_slots"=>0,
         "total_price"=>0,
     ];
+
+    public $enteredDiscountCode;
+    public $discountApplied=false;
+
+    public function applyDiscount(){
+        $this->validate([
+            "enteredDiscountCode"=>"required|exists:discounts,code"
+        ],[
+            "enteredDiscountCode.required"=>"Please enter a discount code",
+            "enteredDiscountCode.exists"=>"The discount code you entered is invalid"
+        ]);
+
+        $discount=Discount::where("code",$this->enteredDiscountCode)->first();
+
+        // check if discount is active
+        if(!$discount->is_active){
+            $this->addError("enteredDiscountCode","The discount code you entered is not active");
+            return;
+        }
+
+        // check if discount is expired
+        if($discount->is_expired){
+            $this->addError("enteredDiscountCode","The discount code you entered is expired");
+            return;
+        }
+
+        // apply discount
+
+        $this->discountApplied=true;
+
+        $this->checkoutCalculations["total_price"]=($this->checkoutCalculations["total_price"]*$discount->discount_percentage)/100;
+
+
+
+    }
 
 
 

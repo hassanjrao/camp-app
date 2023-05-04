@@ -312,6 +312,15 @@
                             </a>
                         </li>
 
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->segment(2) == 'discounts' ? ' active' : '' }}"
+                                href="{{ route('admin.discounts.index') }}">
+
+                                <i class="fas fa-info  nav-main-link-icon"></i>
+                                <span class="nav-main-link-name">Discounts</span>
+                            </a>
+                        </li>
+
 
 
                     </ul>
