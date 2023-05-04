@@ -48,7 +48,7 @@ class Carts extends Component
 
         $this->discountApplied=true;
 
-        $this->checkoutCalculations["total_price"]=($this->checkoutCalculations["total_price"]*$discount->discount_percentage)/100;
+        $this->checkoutCalculations["total_price"] = $this->checkoutCalculations["total_price"] - ($this->checkoutCalculations["total_price"] * ($discount->discount_percentage / 100));
 
 
 
