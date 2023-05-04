@@ -36,6 +36,7 @@
                                 <th>End Date Time</th>
                                 <th>Active</th>
                                 <th>Expired</th>
+                                <th>Created At</th>
                                 <th>Updated At</th>
                                 <th>Action</th>
 
